@@ -32,17 +32,6 @@ class WordCound extends Component {
       }))
     }
   }
-  colorText = () => {
-    if (this.state.max_chars - this.state.maxCharOver >= this.state.chars_right)
-    {
-      return 'bg-red text-red'
-    }
-    if (this.state.chars_right <= this.state.max_chars - this.state.maxCharWarn)
-    {
-      return 'bg-yellow'
-    }
-    return 'bg-green'
-  }
   render(){
     return(
       <div className="container mx-auto h-full border border-solid rounded mt-5 flex flex-row bg-green-lightest" style={{ maxWidth: 700}}>
