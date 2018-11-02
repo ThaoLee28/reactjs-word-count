@@ -7,7 +7,7 @@ class WordCound extends Component {
     this.state = {
       chars_right: null, 
       max_chars: 100,
-      maxCharWarn: 60,
+      maxCharWarn: 80,
       maxCharOver: 101,
       value: '',
       msg: [],
@@ -41,7 +41,7 @@ class WordCound extends Component {
     {
       return 'bg-yellow'
     }
-    return 'bg-green w-full'
+    return 'bg-green'
   }
   render(){
     return(
@@ -88,8 +88,8 @@ class WordCound extends Component {
               </button>
             </form>
           </div>
-          <div style={{width: this.state.max_chars}} className="bg-grey">
-            <div style={{width: this.state.chars_right}} className={`${this.colorText()}`}>{this.state.chars_right}</div>
+          <div style={{width: `${this.state.max_chars + '%'}`}} className="bg-grey">
+            <div style={{width: `${this.state.chars_right + '%'}`}} className={`${this.colorText()}`}>{this.state.chars_right}</div>
           </div>
         </div>
       </div>
