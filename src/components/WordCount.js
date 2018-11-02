@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import classNames from 'classnames/bind';
+import CircularProgress from './CircularProgress';
 
 class WordCound extends Component {
   constructor(props) {
@@ -45,7 +45,7 @@ class WordCound extends Component {
   }
   render(){
     return(
-      <div className="container mx-auto h-64 border border-solid rounded mt-5 flex flex-row bg-green-lightest" style={{ maxWidth: 700}}>
+      <div className="container mx-auto h-full border border-solid rounded mt-5 flex flex-row bg-green-lightest" style={{ maxWidth: 700}}>
         <div className="h-16 w-16 flex items-center justify-center my-3 ml-5">
           <img 
             className="max-w-full rounded-full bg-white" 
@@ -58,8 +58,9 @@ class WordCound extends Component {
             <ul 
               className="list-reset border border-green rounded w-full p-4 bg-white h-64"
               style={{
-                overflowY: 'scroll',
+                overflow: 'scroll',
                 maxHeight: 100,
+                maxWidth: 610,
               }}
             >
               {(this.state.msg || []).map((ms) =>(
@@ -88,8 +89,8 @@ class WordCound extends Component {
               </button>
             </form>
           </div>
-          <div style={{width: `${this.state.max_chars + '%'}`}} className="bg-grey">
-            <div style={{width: `${this.state.chars_right + '%'}`}} className={`${this.colorText()}`}>{this.state.chars_right}</div>
+          <div className="flex justify-end">
+            <CircularProgress word={`${this.state.chars_right == null ? this.state.max_chars : this.state.chars_right} `}/>
           </div>
         </div>
       </div>
