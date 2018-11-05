@@ -6,7 +6,7 @@ class CircularProgress extends Component {
     word: 0,
     strokeWidth: 5
   };
-  colorCircle = () => {
+  handlechangeColor = () => {
     if (this.props.word < 0)
       return "red";
     if (this.props.word > 0 && this.props.word <= 20)
@@ -44,7 +44,7 @@ class CircularProgress extends Component {
           style={{
             strokeDasharray: dashArray,
             strokeDashoffset: `${this.props.word < 0 ? 0 : dashOffset}`,
-            stroke: `${this.colorCircle()}`,
+            stroke: `${this.handlechangeColor()}`,
             strokeLinecap: 'round',
             strokeLinejoin: 'round',
             fill: 'none',
@@ -56,7 +56,7 @@ class CircularProgress extends Component {
           y="50%"
           dy=".3em"
           textAnchor="middle"
-          style={{fill: `${this.colorCircle()}`}}
+          style={{fill: `${this.changeColor()}`}}
         >
           {`${this.props.word > 20 ? '' : this.props.word }`}
         </text>

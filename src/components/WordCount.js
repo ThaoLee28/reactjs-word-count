@@ -19,7 +19,6 @@ class WordCound extends Component {
       chars_right: charLength * 100 / maxChar,
       value: e.target.value,
     });
-    //console.log(this.state.chars_right)
   }
   sendMsg = (e) => {
     e.preventDefault()
