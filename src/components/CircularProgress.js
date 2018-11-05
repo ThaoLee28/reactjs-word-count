@@ -3,13 +3,13 @@ import React, { Component } from 'react';
 class CircularProgress extends Component {
   static defaultProps = {
     size: 40,
-    word: 100,
+    word: 0,
     strokeWidth: 5
   };
   colorCircle = () => {
     if (this.props.word < 0)
       return "red";
-    if (this.props.word > 0 && this.props.word <=20)
+    if (this.props.word > 0 && this.props.word <= 20)
       return "yellow";
     if (this.props.word > 20)
       return "green";
@@ -19,7 +19,7 @@ class CircularProgress extends Component {
     const radius = (this.props.size - this.props.strokeWidth) / 2;
     const viewBox = `0 0 ${size} ${size}`;
     const dashArray = radius * Math.PI * 2;
-    const dashOffset = dashArray - dashArray * this.props.word / 100;
+    const dashOffset = 1 - (dashArray - dashArray * this.props.word / 100);
     return (
       <svg
         width={this.props.size}
@@ -43,7 +43,7 @@ class CircularProgress extends Component {
           transform={`rotate(-90 ${this.props.size / 2} ${this.props.size / 2})`}
           style={{
             strokeDasharray: dashArray,
-            strokeDashoffset: dashOffset,
+            strokeDashoffset: `${this.props.word < 0 ? 0 : dashOffset}`,
             stroke: `${this.colorCircle()}`,
             strokeLinecap: 'round',
             strokeLinejoin: 'round',
@@ -55,8 +55,10 @@ class CircularProgress extends Component {
           x="50%"
           y="50%"
           dy=".3em"
-          textAnchor="middle">
-          {`${this.props.word}`}
+          textAnchor="middle"
+          style={{fill: `${this.colorCircle()}`}}
+        >
+          {`${this.props.word > 20 ? '' : this.props.word }`}
         </text>
       </svg>
     );

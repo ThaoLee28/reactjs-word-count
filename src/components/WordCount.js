@@ -7,8 +7,6 @@ class WordCound extends Component {
     this.state = {
       chars_right: null, 
       max_chars: 100,
-      maxCharWarn: 80,
-      maxCharOver: 101,
       value: '',
       msg: [],
     };
@@ -18,9 +16,10 @@ class WordCound extends Component {
     const maxChar = this.state.max_chars;
     const charLength = maxChar - charCount;
     this.setState({
-      chars_right: charLength,
+      chars_right: charLength * 100 / maxChar,
       value: e.target.value,
     });
+    //console.log(this.state.chars_right)
   }
   sendMsg = (e) => {
     e.preventDefault()
@@ -79,7 +78,9 @@ class WordCound extends Component {
             </form>
           </div>
           <div className="flex justify-end">
-            <CircularProgress word={`${this.state.chars_right == null ? this.state.max_chars : this.state.chars_right} `}/>
+            <CircularProgress 
+              word={`${this.state.chars_right == null ? '' : this.state.chars_right} `}
+            />
           </div>
         </div>
       </div>
