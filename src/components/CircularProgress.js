@@ -56,7 +56,7 @@ class CircularProgress extends Component {
           y="50%"
           dy=".3em"
           textAnchor="middle"
-          style={{fill: `${this.changeColor()}`}}
+          style={{fill: `${this.handlechangeColor()}`}}
         >
           {`${this.props.word > 20 ? '' : this.props.word }`}
         </text>
